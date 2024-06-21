@@ -26,16 +26,16 @@ pip install aiohttp
 DISCLAIMER:
     
 Note that some commands here are made by astraa so credits to him <3
-Also this is kinda broken ngl
+
 """
 
 
 
 
-IPINFO_API_TOKEN = "7d7c35ba54fdf1" # get it at ipinfo.io
+IPINFO_API_TOKEN = "api token here" # get it at ipinfo.io
 PREFIX = ">"
 #put yo token over here lol
-TOKEN = "MTI0NDk5NTE1NzUyMzQzNTU4MQ.G9uh6r.MM82_dnoejZxaZSsRcVwxXEoGb2uvZhVlTi1M4"
+TOKEN = "ur account token here"
 
 
 
