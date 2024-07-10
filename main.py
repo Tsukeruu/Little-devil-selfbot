@@ -1,3 +1,4 @@
+    
 import discord
 from discord.ext import commands
 import time
@@ -23,16 +24,16 @@ pystyle
 DISCLAIMER:
     
 Note that some commands here are made by astraa so credits to him <3
-Also this is kinda broken ngl
+Also I recommend you run install.bat yourself instead of the one that inputs it
 """
 
 
 
 
-IPINFO_API_TOKEN = "get the ipinfo api at their websites" # get it at ipinfo.io
+IPINFO_API_TOKEN = "api token of ipinfo get it at their website" # get it at ipinfo.io
 PREFIX = ">"
 #put yo token over here lol
-TOKEN = "token in here" #input token here
+TOKEN = "input discord token here" #input token here
 
 pystyle.System.Title("Lil devil selfbot By ELDIABLO")
 
@@ -649,6 +650,7 @@ async def guildicon(ctx):
 @bot.command()
 async def purge(ctx, amount: int=None):
     await ctx.message.add_reaction('✅')
+    print(f'{ctx.message.author.name} sent the command: {ctx.message.content}')
     await ctx.message.delete()
     if amount is None:
         await ctx.send(f'[ERROR]: Invalid input! Command: {bot.command_prefix}purge <amount>')
@@ -657,7 +659,7 @@ async def purge(ctx, amount: int=None):
             lambda m: m):
         try:
             await message.delete()
-            print(f'{ctx.message.author.name} sent the command: {ctx.message.content}')
+            
         except:
             pass
 
@@ -821,6 +823,7 @@ async def raid(ctx, message: str, count: int, delay: float, channel: commands.Te
                 
         ''')
     
+
 
 
 bot.run(TOKEN, bot=False)
