@@ -30,10 +30,10 @@ Also I recommend you run install.bat yourself instead of the one that inputs it
 
 
 
-IPINFO_API_TOKEN = "api token of ipinfo get it at their website" # get it at ipinfo.io
+IPINFO_API_TOKEN = "get this at https://ipinfo.io/" # get it at ipinfo.io
 PREFIX = ">"
 #put yo token over here lol
-TOKEN = "input discord token here" #input token here
+TOKEN = "replace me with token but keep quotations" #input token here
 
 pystyle.System.Title("Lil devil selfbot By ELDIABLO")
 
@@ -805,25 +805,24 @@ async def raid(ctx, message: str, count: int, delay: float, channel: commands.Te
     
     os.system('cls' if os.name == 'nt' else 'clear')
 
-    print('''
-          
+    text5 = '''
+
+
+                            ▄▄▌  ▪  ▄▄▄▄▄▄▄▄▄▄▄▄▌  ▄▄▄ .    ·▄▄▄▄  ▄▄▄ . ▌ ▐·▪  ▄▄▌  
+                            ██•  ██ •██  •██  ██•  ▀▄.▀·    ██▪ ██ ▀▄.▀·▪█·█▌██ ██•  
+                            ██▪  ▐█· ▐█.▪ ▐█.▪██▪  ▐▀▀▪▄    ▐█· ▐█▌▐▀▀▪▄▐█▐█•▐█·██▪  
+                            ▐█▌▐▌▐█▌ ▐█▌· ▐█▌·▐█▌▐▌▐█▄▄▌    ██. ██ ▐█▄▄▌ ███ ▐█▌▐█▌▐▌
+                            .▀▀▀ ▀▀▀ ▀▀▀  ▀▀▀ .▀▀▀  ▀▀▀     ▀▀▀▀▀•  ▀▀▀ . ▀  ▀▀▀.▀▀▀         
+
+
+
+'''
+
         
- ██▓     ██▓▄▄▄█████▓▄▄▄█████▓ ██▓    ▓█████    ▓█████▄ ▓█████ ██▒   █▓ ██▓ ██▓    
-▓██▒    ▓██▒▓  ██▒ ▓▒▓  ██▒ ▓▒▓██▒    ▓█   ▀    ▒██▀ ██▌▓█   ▀▓██░   █▒▓██▒▓██▒    
-▒██░    ▒██▒▒ ▓██░ ▒░▒ ▓██░ ▒░▒██░    ▒███      ░██   █▌▒███   ▓██  █▒░▒██▒▒██░    
-▒██░    ░██░░ ▓██▓ ░ ░ ▓██▓ ░ ▒██░    ▒▓█  ▄    ░▓█▄   ▌▒▓█  ▄  ▒██ █░░░██░▒██░    
-░██████▒░██░  ▒██▒ ░   ▒██▒ ░ ░██████▒░▒████▒   ░▒████▓ ░▒████▒  ▒▀█░  ░██░░██████▒
-░ ▒░▓  ░░▓    ▒ ░░     ▒ ░░   ░ ▒░▓  ░░░ ▒░ ░    ▒▒▓  ▒ ░░ ▒░ ░  ░ ▐░  ░▓  ░ ▒░▓  ░
-░ ░ ▒  ░ ▒ ░    ░        ░    ░ ░ ▒  ░ ░ ░  ░    ░ ▒  ▒  ░ ░  ░  ░ ░░   ▒ ░░ ░ ▒  ░
-  ░ ░    ▒ ░  ░        ░        ░ ░      ░       ░ ░  ░    ░       ░░   ▒ ░  ░ ░   
-    ░  ░ ░                        ░  ░   ░  ░      ░       ░  ░     ░   ░      ░  ░
-          
-
-          You are still logged in by the way :)
-                
-        ''')
-    
-
-
+    colortext = pystyle.Colorate.Vertical(pystyle.Colors.purple_to_blue, text5, 1)        
+    center1 = pystyle.Center.XCenter(colortext)
+    print(center1)
+    center2 = pystyle.Center.XCenter('Still logged in btw :))')
+    colorprint = pystyle.Write.Print(center2,pystyle.Colors.purple_to_blue, interval=0.050)
 
 bot.run(TOKEN, bot=False)
