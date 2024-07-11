@@ -49,10 +49,10 @@ Also this is kinda broken ngl
 
 
 
-IPINFO_API_TOKEN = "7d7c35ba54fdf1" # get it at ipinfo.io
+IPINFO_API_TOKEN = "get this at ipinfo" # get it at ipinfo.io
 PREFIX = ">"
 #put yo token over here lol
-TOKEN = "MTI0NDk5NTE1NzUyMzQzNTU4MQ.GUno3m.RawxMsnakRMNXSFShfomEb86AhRLYrsggD098c" #input token here
+TOKEN = "input token here" #input token here
 
 pystyle.System.Title("Lil devil selfbot By ELDIABLO")
 
@@ -833,3 +833,4 @@ async def raid(ctx, message: str, count: int, delay: float, channel: commands.Te
 
 
 bot.run(TOKEN, bot=False)
+
