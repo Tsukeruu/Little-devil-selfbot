@@ -32,7 +32,7 @@ Also this is kinda broken ngl
 IPINFO_API_TOKEN = "get this at their website" # get it at ipinfo.io
 PREFIX = ">"
 #put yo token over here lol
-TOKEN = "put your token here" #input token here
+TOKEN = "put token here" #input token here
 
 pystyle.System.Title("Lil devil selfbot By ELDIABLO")
 
@@ -71,7 +71,7 @@ async def on_ready():
     activity = discord.Streaming(name="Little devil", url="https://www.youtube.com/watch?v=2g5xkLqIElU")
     await bot.change_presence(activity=activity)
     time.sleep(1)
-    boxtext = f"Logged in as: {bot.user.name}\nUserID: {bot.user.id}\nVersion: 2.0\nPrefix: {PREFIX}\nDesign is inspired from PWNSEC\nWebsite: PWNSEC.net\nStartup command: >help"
+    boxtext = f"[+] Logged in as: {bot.user.name}\n[+] UserID: {bot.user.id}\n[+] Version: 2.0\n[+] Prefix: {PREFIX}\nDesign is inspired from PWNSEC\nWebsite: PWNSEC.net\nStartup command: >help"
     box = pystyle.Box.Lines(boxtext)
     centerbox = pystyle.Center.XCenter(pystyle.Colorate.Vertical(pystyle.Colors.purple_to_blue, box, 1))
     print(centerbox)
