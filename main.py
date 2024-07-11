@@ -1,4 +1,3 @@
-    
 import discord
 from discord.ext import commands
 import time
@@ -24,16 +23,16 @@ pystyle
 DISCLAIMER:
     
 Note that some commands here are made by astraa so credits to him <3
-Also I recommend you run install.bat yourself instead of the one that inputs it
+Also this is kinda broken ngl
 """
 
 
 
 
-IPINFO_API_TOKEN = "get this at https://ipinfo.io/" # get it at ipinfo.io
+IPINFO_API_TOKEN = "7d7c35ba54fdf1" # get it at ipinfo.io
 PREFIX = ">"
 #put yo token over here lol
-TOKEN = "replace me with token but keep quotations" #input token here
+TOKEN = "MTI0NDk5NTE1NzUyMzQzNTU4MQ.G9uh6r.MM82_dnoejZxaZSsRcVwxXEoGb2uvZhVlTi1M4" #input token here
 
 pystyle.System.Title("Lil devil selfbot By ELDIABLO")
 
@@ -72,7 +71,7 @@ async def on_ready():
     activity = discord.Streaming(name="Little devil", url="https://www.youtube.com/watch?v=2g5xkLqIElU")
     await bot.change_presence(activity=activity)
     time.sleep(1)
-    boxtext = f"Logged in as: {bot.user.name}\nUserID: {bot.user.id}\nVersion: 2.0\nPrefix: >\nDesign is inspired from PWNSEC\nWebsite: PWNSEC.net\nStartup command: >help"
+    boxtext = f"Logged in as: {bot.user.name}\nUserID: {bot.user.id}\nVersion: 2.0\nPrefix: {PREFIX}\nDesign is inspired from PWNSEC\nWebsite: PWNSEC.net\nStartup command: >help"
     box = pystyle.Box.Lines(boxtext)
     centerbox = pystyle.Center.XCenter(pystyle.Colorate.Vertical(pystyle.Colors.purple_to_blue, box, 1))
     print(centerbox)
@@ -650,7 +649,6 @@ async def guildicon(ctx):
 @bot.command()
 async def purge(ctx, amount: int=None):
     await ctx.message.add_reaction('✅')
-    print(f'{ctx.message.author.name} sent the command: {ctx.message.content}')
     await ctx.message.delete()
     if amount is None:
         await ctx.send(f'[ERROR]: Invalid input! Command: {bot.command_prefix}purge <amount>')
@@ -659,7 +657,7 @@ async def purge(ctx, amount: int=None):
             lambda m: m):
         try:
             await message.delete()
-            
+            print(f'{ctx.message.author.name} sent the command: {ctx.message.content}')
         except:
             pass
 
@@ -805,24 +803,24 @@ async def raid(ctx, message: str, count: int, delay: float, channel: commands.Te
     
     os.system('cls' if os.name == 'nt' else 'clear')
 
-    text5 = '''
-
-
-                            ▄▄▌  ▪  ▄▄▄▄▄▄▄▄▄▄▄▄▌  ▄▄▄ .    ·▄▄▄▄  ▄▄▄ . ▌ ▐·▪  ▄▄▌  
-                            ██•  ██ •██  •██  ██•  ▀▄.▀·    ██▪ ██ ▀▄.▀·▪█·█▌██ ██•  
-                            ██▪  ▐█· ▐█.▪ ▐█.▪██▪  ▐▀▀▪▄    ▐█· ▐█▌▐▀▀▪▄▐█▐█•▐█·██▪  
-                            ▐█▌▐▌▐█▌ ▐█▌· ▐█▌·▐█▌▐▌▐█▄▄▌    ██. ██ ▐█▄▄▌ ███ ▐█▌▐█▌▐▌
-                            .▀▀▀ ▀▀▀ ▀▀▀  ▀▀▀ .▀▀▀  ▀▀▀     ▀▀▀▀▀•  ▀▀▀ . ▀  ▀▀▀.▀▀▀         
-
-
-
-'''
-
+    print('''
+          
         
-    colortext = pystyle.Colorate.Vertical(pystyle.Colors.purple_to_blue, text5, 1)        
-    center1 = pystyle.Center.XCenter(colortext)
-    print(center1)
-    center2 = pystyle.Center.XCenter('Still logged in btw :))')
-    colorprint = pystyle.Write.Print(center2,pystyle.Colors.purple_to_blue, interval=0.050)
+ ██▓     ██▓▄▄▄█████▓▄▄▄█████▓ ██▓    ▓█████    ▓█████▄ ▓█████ ██▒   █▓ ██▓ ██▓    
+▓██▒    ▓██▒▓  ██▒ ▓▒▓  ██▒ ▓▒▓██▒    ▓█   ▀    ▒██▀ ██▌▓█   ▀▓██░   █▒▓██▒▓██▒    
+▒██░    ▒██▒▒ ▓██░ ▒░▒ ▓██░ ▒░▒██░    ▒███      ░██   █▌▒███   ▓██  █▒░▒██▒▒██░    
+▒██░    ░██░░ ▓██▓ ░ ░ ▓██▓ ░ ▒██░    ▒▓█  ▄    ░▓█▄   ▌▒▓█  ▄  ▒██ █░░░██░▒██░    
+░██████▒░██░  ▒██▒ ░   ▒██▒ ░ ░██████▒░▒████▒   ░▒████▓ ░▒████▒  ▒▀█░  ░██░░██████▒
+░ ▒░▓  ░░▓    ▒ ░░     ▒ ░░   ░ ▒░▓  ░░░ ▒░ ░    ▒▒▓  ▒ ░░ ▒░ ░  ░ ▐░  ░▓  ░ ▒░▓  ░
+░ ░ ▒  ░ ▒ ░    ░        ░    ░ ░ ▒  ░ ░ ░  ░    ░ ▒  ▒  ░ ░  ░  ░ ░░   ▒ ░░ ░ ▒  ░
+  ░ ░    ▒ ░  ░        ░        ░ ░      ░       ░ ░  ░    ░       ░░   ▒ ░  ░ ░   
+    ░  ░ ░                        ░  ░   ░  ░      ░       ░  ░     ░   ░      ░  ░
+          
+
+          You are still logged in by the way :)
+                
+        ''')
+    
+
 
 bot.run(TOKEN, bot=False)
