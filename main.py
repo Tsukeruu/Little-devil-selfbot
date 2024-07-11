@@ -1,7 +1,27 @@
-import discord
-from discord.ext import commands
 import time
 import os
+purple = "\033[95m"
+reset = "\033[0m"
+cyan = "\033[96m"
+red = "\033[91m"
+kek = print(f"{cyan}Note you can click on the install.bat and install the libraries automatically or type y on the following input{reset}")
+time.sleep(2)
+while True:
+    package = input(f'{purple}Would you like to install the packages? Y/N: {reset}')
+    if package.lower() == "y":
+       #os.startfile(os.path.join(os.getcwd(), 'install.bat'))
+       os.system("@echo Little devil manual installation:")
+       os.system("pip install -r requirements.txt")
+       break
+    elif package.lower() == "n":
+        break
+    else:
+       print(f'{red}Wrong choice{reset}')
+
+
+
+import discord
+from discord.ext import commands
 import asyncio
 from discord import Forbidden
 import requests
@@ -29,28 +49,17 @@ Also this is kinda broken ngl
 
 
 
-IPINFO_API_TOKEN = "get this at their website" # get it at ipinfo.io
+IPINFO_API_TOKEN = "7d7c35ba54fdf1" # get it at ipinfo.io
 PREFIX = ">"
 #put yo token over here lol
-TOKEN = "put token here" #input token here
+TOKEN = "MTI0NDk5NTE1NzUyMzQzNTU4MQ.GUno3m.RawxMsnakRMNXSFShfomEb86AhRLYrsggD098c" #input token here
 
 pystyle.System.Title("Lil devil selfbot By ELDIABLO")
 
 bot = commands.Bot(command_prefix= PREFIX, self_bot=True)
 bot.remove_command('help')
 
-kek = pystyle.Write.Print("Note you can click on the install.bat and install the libraries automatically or click y on the following input\n", pystyle.Colors.purple_to_blue, interval = 0.0025)
-time.sleep(2)
-while True:
-    package = pystyle.Write.Input('Would you like to install the packages? Y/N: ', pystyle.Colors.purple_to_blue, interval=0.0025)
-    if package.lower() == "y":
-       #os.startfile(os.path.join(os.getcwd(), 'install.bat'))
-       os.system("pip install -r requirements.txt")
-       break
-    elif package.lower() == "n":
-        break
-    else:
-        pystyle.Write.Print('Wrong choice\n', pystyle.Colors.red_to_black, interval=0.05)
+
 
 @bot.event
 async def on_ready():
