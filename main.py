@@ -29,10 +29,10 @@ Also this is kinda broken ngl
 
 
 
-IPINFO_API_TOKEN = "7d7c35ba54fdf1" # get it at ipinfo.io
+IPINFO_API_TOKEN = "get this at their website" # get it at ipinfo.io
 PREFIX = ">"
 #put yo token over here lol
-TOKEN = "MTI0NDk5NTE1NzUyMzQzNTU4MQ.G9uh6r.MM82_dnoejZxaZSsRcVwxXEoGb2uvZhVlTi1M4" #input token here
+TOKEN = "put your token here" #input token here
 
 pystyle.System.Title("Lil devil selfbot By ELDIABLO")
 
