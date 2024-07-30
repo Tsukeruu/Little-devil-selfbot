@@ -1,6 +1,5 @@
 {
-
 "MSGSNIPE": true,
-"TOKEN": "PUT YOUR TOKEN HERE"
-
+"TOKEN": "discord account token here",
+"APITOKEN": "get this at ipinfo.io"
 }
