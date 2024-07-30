@@ -1,3 +1,5 @@
-# Little-devil-selfbot
+#Little Devil selfbot
 
-**Also note, you can open the install.bat to install the libraries directly, OR once you run the script it will ask if you wana install them or no :3**
+**Put your token in config.json, and change msgsnipe to false if you dont want it to log deleted messages, change it to true if you do want it to log deleted messages...**
+**get an api token from ipinfo.io, and change it at the variable**
+
