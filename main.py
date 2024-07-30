@@ -45,7 +45,9 @@ discord.py-self
 
 
 DISCLAIMER:
-    
+
+IF YOU FIND ERRORS READ THE README FILE!!!
+
 Note that some commands here are made by astraa so credits to him 
 
 """
