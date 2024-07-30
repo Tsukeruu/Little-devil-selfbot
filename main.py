@@ -852,21 +852,25 @@ async def raid(ctx, message: str, count: int, delay: float, channel: commands.Te
 
     
     os.system('cls' if os.name == 'nt' else 'clear')
-    asciiart = '''
+    text = '''
+
 
         ▄▄▌  ▪  ▄▄▄▄▄▄▄▄▄▄▄▄▌  ▄▄▄ .    ·▄▄▄▄  ▄▄▄ . ▌ ▐·▪  ▄▄▌  
         ██•  ██ •██  •██  ██•  ▀▄.▀·    ██▪ ██ ▀▄.▀·▪█·█▌██ ██•  
         ██▪  ▐█· ▐█.▪ ▐█.▪██▪  ▐▀▀▪▄    ▐█· ▐█▌▐▀▀▪▄▐█▐█•▐█·██▪  
         ▐█▌▐▌▐█▌ ▐█▌· ▐█▌·▐█▌▐▌▐█▄▄▌    ██. ██ ▐█▄▄▌ ███ ▐█▌▐█▌▐▌
         .▀▀▀ ▀▀▀ ▀▀▀  ▀▀▀ .▀▀▀  ▀▀▀     ▀▀▀▀▀•  ▀▀▀ . ▀  ▀▀▀.▀▀▀         
-    
-                        You're still logged in btw :))
 
-        
+
 '''
- 
-    colortext = pystyle.Colorate.Vertical(pystyle.Colors.purple_to_blue, pystyle.Center.XCenter(asciiart), 1)
-    print(colortext)
 
+    #print(pystyle.Colorate.Vertical(pystyle.Colors.yellow_to_red, text, 1))
+    colortext = pystyle.Colorate.Vertical(pystyle.Colors.purple_to_blue, pystyle.Center.XCenter(text), 1)
+    print(colortext)
+    time.sleep(1)
+    boxtext = f"[+] Logged in as: {bot.user.name}\n[+] UserID: {bot.user.id}\n[+] Version: 2.5\n[+] Prefix: {PREFIX}\nDesign is inspired from PWNSEC\nWebsite: PWNSEC.net\nStartup command: >help\n[+] MSGSNIPING: {config['MSGSNIPE']}"
+    box = pystyle.Box.Lines(boxtext)
+    centerbox = pystyle.Center.XCenter(pystyle.Colorate.Vertical(pystyle.Colors.purple_to_blue, box, 1))
+    print(centerbox)
 
 bot.run(TOKEN)
