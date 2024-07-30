@@ -36,13 +36,12 @@ import json
 
 """
 If you want to install all these packages here you go:
-discord==2.3.2
-discord.py==2.4.0
+discord
+discord.py
 aiohttp
 requests
 pystyle
-discord.py-self==2.0.0
-
+discord.py-self
 
 DISCLAIMER:
     
