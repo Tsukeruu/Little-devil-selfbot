@@ -54,7 +54,7 @@ with open('config.json', 'r') as f:
     config = json.load(f)
 
 
-IPINFO_API_TOKEN = "put it in here..." # get it at ipinfo.io
+IPINFO_API_TOKEN = "7d7c35ba54fdf1" # get it at ipinfo.io
 PREFIX = ">"
 #put yo token over here lol
 TOKEN = config['TOKEN'] #input token here
@@ -147,26 +147,25 @@ if config['MSGSNIPE']:
 
 @bot.command(aliases=["pornhubcomment", 'phc'])
 async def phcomment(ctx, user: str = None, *, args=None):
-        await ctx.message.add_reaction('✅')
-        await ctx.message.delete()
-        if user is None or args is None:
-            await ctx.send(f'[ERROR]: Invalid input! Command: {bot.command_prefix}phcomment <message>')
-            return
-        endpoint = "https://nekobot.xyz/api/imagegen?type=phcomment&text=" + args + "&username=" + user + "&image=" + str(
-            ctx.author.avatar_url_as(format="png"))
-        r = requests.get(endpoint)
-        res = r.json()
-        try:
-            async with aiohttp.ClientSession() as session:
-                async with session.get(res["message"]) as resp:
-                    image = await resp.read()
-            with io.BytesIO(image) as file:
-                await ctx.send(file=discord.File(file, f"astraa_pornhub_comment.png"))
-                print(f'{ctx.message.author.name} sent the command: {ctx.message.content}')
-        except:
-            await ctx.send(res["message"])
+    await ctx.message.add_reaction('✅')
+    print(f'{ctx.message.author.name} sent the command: {ctx.message.content}')
+    await ctx.message.delete()
+    if user is None or args is None:
+        await ctx.send(f'[ERROR]: Invalid input! Command: {bot.command_prefix}phcomment <message>')
+        return
+    avatar_url = ctx.author.avatar.url if ctx.author.avatar else ctx.author.default_avatar.url
+    endpoint = f"https://nekobot.xyz/api/imagegen?type=phcomment&text={args}&username={user}&image={avatar_url}"
+    r = requests.get(endpoint)
+    res = r.json()
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get(res["message"]) as resp:
+                image = await resp.read()
+        with io.BytesIO(image) as file:
+            await ctx.send(file=discord.File(file, f"astraa_pornhub_comment.png"))
             
-
+    except Exception as e:
+        await ctx.send(f'[ERROR]: An error occurred while processing the image: {str(e)}')
 
 
 
@@ -437,12 +436,15 @@ async def servername(ctx, *, name=None):
     await ctx.guild.edit(name=name)
     print(f'{ctx.message.author.name} sent the command: {ctx.message.content}')
 
+
+
+
+
 @bot.command()
 async def help(ctx):
     await ctx.message.add_reaction('✅')
     message = await ctx.send("```ini\n[Welcome to Little Devil selfbot created by el diablo, please stand by]\n```")
     await asyncio.sleep(1)  
-    
     new_message = f"```ini\nCreated by diablo | Version 2.5 | PREFIX = {PREFIX}\n \n[>raid]: >raid <message> <numberoftimes> <delay put 0> <specify channel if not then it will spam in all> (dont forget to remove the <>)\n[>info]: >info <userid> or <username>\n[>ping]: Returns your MS\n[>geocode]: >geocode <latitude> <longitude> (must be integers)\n[>exit]: Exits out of the selfbot\n[>iplookup]: >iplookup <ip>\n[>nitro]: self explanatory, generates nitro \n[>minesweeper]: play a game of minesweeper :D\n[>filegrabber (webhook)]: >filegrabber (put webhook url) all this does is make a token grabber py file\n[>nuke]: This time it requires admin\n[>hack]: >hack (user) this time its a fun command\n[>guildicon]: >self explanatory\n[>servername]: <name>\n[>massreact (emoji)]: >massreact (select the emoji you wana react with)\n[>purge]: >purge (int)\n[>tableflip]: does the cool thing\n[>lenny]: another cool thing\n[>shrug]: ANOTHER COOL THING\n[>unflip]: wowww\n[>phcomment] >phcomment <username> <comment>\n[>rage]: >rage (userid) replies L to them everytime they say something in chat\n[>911]: send a 911 animation with emojis\n[>fuck]: <userid> sends an ascii of you fucking him lmfao```"
     await message.edit(content=new_message)
     print(f'{ctx.message.author.name} sent the command: {ctx.message.content}')
