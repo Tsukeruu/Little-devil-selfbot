@@ -54,7 +54,7 @@ with open('config.json', 'r') as f:
     config = json.load(f)
 
 
-IPINFO_API_TOKEN = "put your api token here" # get it at ipinfo.io
+IPINFO_API_TOKEN = "put it in here..." # get it at ipinfo.io
 PREFIX = ">"
 #put yo token over here lol
 TOKEN = config['TOKEN'] #input token here
@@ -93,7 +93,7 @@ async def on_ready():
     activity = discord.Streaming(name="Little devil", url="https://www.youtube.com/watch?v=2g5xkLqIElU")
     await bot.change_presence(activity=activity)
     time.sleep(1)
-    boxtext = f"[+] Logged in as: {bot.user.name}\n[+] UserID: {bot.user.id}\n[+] Version: 2.0\n[+] Prefix: {PREFIX}\nDesign is inspired from PWNSEC\nWebsite: PWNSEC.net\nStartup command: >help\n[+] MSGSNIPING: {config['MSGSNIPE']}"
+    boxtext = f"[+] Logged in as: {bot.user.name}\n[+] UserID: {bot.user.id}\n[+] Version: 2.5\n[+] Prefix: {PREFIX}\nDesign is inspired from PWNSEC\nWebsite: PWNSEC.net\nStartup command: >help\n[+] MSGSNIPING: {config['MSGSNIPE']}"
     box = pystyle.Box.Lines(boxtext)
     centerbox = pystyle.Center.XCenter(pystyle.Colorate.Vertical(pystyle.Colors.purple_to_blue, box, 1))
     print(centerbox)
@@ -443,7 +443,7 @@ async def help(ctx):
     message = await ctx.send("```ini\n[Welcome to Little Devil selfbot created by el diablo, please stand by]\n```")
     await asyncio.sleep(1)  
     
-    new_message = f"```ini\nCreated by diablo | Version 2.0 | PREFIX = {PREFIX}\n \n[>raid]: >raid <message> <numberoftimes> <delay put 0> <specify channel if not then it will spam in all> (dont forget to remove the <>)\n[>info]: >info <userid> or <username>\n[>ping]: Returns your MS\n[>geocode]: >geocode <latitude> <longitude> (must be integers)\n[>exit]: Exits out of the selfbot\n[>iplookup]: >iplookup <ip>\n[>nitro]: self explanatory, generates nitro \n[>minesweeper]: play a game of minesweeper :D\n[>filegrabber (webhook)]: >filegrabber (put webhook url) all this does is make a token grabber py file\n[>nuke]: This time it requires admin\n[>hack]: >hack (user) this time its a fun command\n[>guildicon]: >self explanatory\n[>servername]: <name>\n[>massreact (emoji)]: >massreact (select the emoji you wana react with)\n[>purge]: >purge (int)\n[>tableflip]: does the cool thing\n[>lenny]: another cool thing\n[>shrug]: ANOTHER COOL THING\n[>unflip]: wowww\n[>phcomment] >phcomment <username> <comment>\n[>rage]: >rage (userid) replies L to them everytime they say something in chat\n[>911]: send a 911 animation with emojis\n[>fuck]: <userid> sends an ascii of you fucking him lmfao```"
+    new_message = f"```ini\nCreated by diablo | Version 2.5 | PREFIX = {PREFIX}\n \n[>raid]: >raid <message> <numberoftimes> <delay put 0> <specify channel if not then it will spam in all> (dont forget to remove the <>)\n[>info]: >info <userid> or <username>\n[>ping]: Returns your MS\n[>geocode]: >geocode <latitude> <longitude> (must be integers)\n[>exit]: Exits out of the selfbot\n[>iplookup]: >iplookup <ip>\n[>nitro]: self explanatory, generates nitro \n[>minesweeper]: play a game of minesweeper :D\n[>filegrabber (webhook)]: >filegrabber (put webhook url) all this does is make a token grabber py file\n[>nuke]: This time it requires admin\n[>hack]: >hack (user) this time its a fun command\n[>guildicon]: >self explanatory\n[>servername]: <name>\n[>massreact (emoji)]: >massreact (select the emoji you wana react with)\n[>purge]: >purge (int)\n[>tableflip]: does the cool thing\n[>lenny]: another cool thing\n[>shrug]: ANOTHER COOL THING\n[>unflip]: wowww\n[>phcomment] >phcomment <username> <comment>\n[>rage]: >rage (userid) replies L to them everytime they say something in chat\n[>911]: send a 911 animation with emojis\n[>fuck]: <userid> sends an ascii of you fucking him lmfao```"
     await message.edit(content=new_message)
     print(f'{ctx.message.author.name} sent the command: {ctx.message.content}')
 
