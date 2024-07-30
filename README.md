@@ -5,4 +5,4 @@
 
 # Errors:
 - *if you happen to come upon an error with the: "TypeError: BotBase.init() missing 1 required keyword-only argument: 'intents'" simply type in your terminal: pip uninstall discord.py-self... once its removed re install it by using pip install discord.py-self==2.0.0**
-- *If you happen to come upon an error with the: "WARNING  discord.utils Info API down. Falling back to manual fetching..." simply type this in your terminal: pip install --upgrade discord.py-self aiohttp... or just upgrade all the libraries
+- *If you happen to come upon an error with the: "WARNING  discord.utils Info API down. Falling back to manual fetching..." simply type this in your terminal: pip install --upgrade discord.py-self aiohttp... or just upgrade all the libraries*
