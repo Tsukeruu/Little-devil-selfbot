@@ -54,7 +54,7 @@ with open('config.json', 'r') as f:
     config = json.load(f)
 
 
-IPINFO_API_TOKEN = "7d7c35ba54fdf1" # get it at ipinfo.io
+IPINFO_API_TOKEN = "put your api token here" # get it at ipinfo.io
 PREFIX = ">"
 #put yo token over here lol
 TOKEN = config['TOKEN'] #input token here
