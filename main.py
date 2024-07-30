@@ -59,6 +59,8 @@ PREFIX = ">"
 #put yo token over here lol
 TOKEN = config['TOKEN'] #input token here
 
+
+
 pystyle.System.Title("Lil devil selfbot By ELDIABLO")
 
 bot = commands.Bot(command_prefix=PREFIX, help_command=None, self_bot=True, chunk_guilds_at_startup=True)
