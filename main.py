@@ -210,7 +210,7 @@ async def info(ctx, user: discord.User):
     username = user.name
     tag = user.discriminator
     created_at = user.created_at.strftime("%Y-%m-%d %H:%M:%S")
-    avatar_url = user.avatar_url if user.avatar else user.default_avatar_url
+    avatar_url = user.avatar.url if user.avatar else user.default_avatar_url
     
     
     badges = []
