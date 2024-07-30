@@ -1,5 +1,6 @@
 import time
 import os
+
 purple = "\033[95m"
 reset = "\033[0m"
 cyan = "\033[96m"
@@ -30,39 +31,45 @@ import random
 import aiohttp
 import io
 import pystyle
-
+import json
 
 
 """
 If you want to install all these packages here you go:
-discord.py==1.7.3
+discord==2.3.2
+discord.py==2.4.0
 aiohttp
 requests
 pystyle
+discord.py-self==2.0.0
+
 
 DISCLAIMER:
     
-Note that some commands here are made by astraa so credits to him <3
-Also this is kinda broken ngl
+Note that some commands here are made by astraa so credits to him 
+
 """
 
+with open('config.json', 'r') as f:    
+    config = json.load(f)
 
 
-
-IPINFO_API_TOKEN = "get this at ipinfo" # get it at ipinfo.io
+IPINFO_API_TOKEN = "7d7c35ba54fdf1" # get it at ipinfo.io
 PREFIX = ">"
 #put yo token over here lol
-TOKEN = "input token here" #input token here
+TOKEN = config['TOKEN'] #input token here
 
 pystyle.System.Title("Lil devil selfbot By ELDIABLO")
 
-bot = commands.Bot(command_prefix= PREFIX, self_bot=True)
+bot = commands.Bot(command_prefix=PREFIX, help_command=None, self_bot=True, chunk_guilds_at_startup=True)
 bot.remove_command('help')
+
 
 
 
 @bot.event
 async def on_ready():
+    os.system('cls')
     text = '''
 
 
@@ -74,13 +81,19 @@ async def on_ready():
 
 
 '''
+
+    if config['MSGSNIPE'] != True:
+        pystyle.Write.Print('MSGSNIPE is set to false, change it in the config file', pystyle.Colors.red_to_yellow, interval=0.020)
+        
+
+
     #print(pystyle.Colorate.Vertical(pystyle.Colors.yellow_to_red, text, 1))
     colortext = pystyle.Colorate.Vertical(pystyle.Colors.purple_to_blue, pystyle.Center.XCenter(text), 1)
     print(colortext)
     activity = discord.Streaming(name="Little devil", url="https://www.youtube.com/watch?v=2g5xkLqIElU")
     await bot.change_presence(activity=activity)
     time.sleep(1)
-    boxtext = f"[+] Logged in as: {bot.user.name}\n[+] UserID: {bot.user.id}\n[+] Version: 2.0\n[+] Prefix: {PREFIX}\nDesign is inspired from PWNSEC\nWebsite: PWNSEC.net\nStartup command: >help"
+    boxtext = f"[+] Logged in as: {bot.user.name}\n[+] UserID: {bot.user.id}\n[+] Version: 2.0\n[+] Prefix: {PREFIX}\nDesign is inspired from PWNSEC\nWebsite: PWNSEC.net\nStartup command: >help\n[+] MSGSNIPING: {config['MSGSNIPE']}"
     box = pystyle.Box.Lines(boxtext)
     centerbox = pystyle.Center.XCenter(pystyle.Colorate.Vertical(pystyle.Colors.purple_to_blue, box, 1))
     print(centerbox)
@@ -115,6 +128,20 @@ async def chatspam(ctx, message: str, count: int, delay: float):
 """
 
 
+if config['MSGSNIPE']:
+    @bot.event
+    async def on_message_delete(message):
+        message_time = message.created_at.strftime('%Y-%m-%d %H:%M:%S')
+        if message.author == bot.user:
+            return
+        if message.author != bot.user:
+            if message.guild is None:
+                if isinstance(message.channel, discord.DMChannel):
+                    pystyle.Write.Print(f'[DM!] Message is deleted by: "{message.author.name}" in DM, Message: "{message.content}", Time: {message_time}\n', pystyle.Colors.purple_to_blue, interval=0.02)
+                else:
+                    pystyle.Write.Print(f'[GC!] Message is deleted by: "{message.author.name}" in a certain GC, Message: "{message.content}", Time: {message_time}\n', pystyle.Colors.purple_to_blue, interval=0.02)
+            else:
+                pystyle.Write.Print(f'[SERVER!] Message is deleted by: "{message.author.name}" in "{message.guild}", #{message.channel.name}, Message: "{message.content}", Time: {message_time}\n', pystyle.Colors.purple_to_blue, interval=0.02)
 
 
 
@@ -621,6 +648,13 @@ async def shrug(ctx):
     await ctx.send(shrug)
     print(f'{ctx.message.author.name} sent the command: {ctx.message.content}')
 
+
+
+
+
+
+
+
 @bot.command()
 async def lenny(ctx):
     await ctx.message.add_reaction('✅')
@@ -734,9 +768,10 @@ async def fuck(ctx, user_id: int):
     await ctx.send(ascii_art)
     print(f'{ctx.message.author.name} sent the command: {ctx.message.content}')
 
-@bot.command(aliases=['halag'])
+@bot.command(aliases=['halag', 'toxic'])
 async def rage(ctx, user_id: int):
     await ctx.message.add_reaction('✅')
+    print(f'{ctx.message.author.name} sent the command: {ctx.message.content}')
     try:
         user = await bot.fetch_user(user_id)
     except discord.NotFound:
@@ -777,7 +812,7 @@ async def rage(ctx, user_id: int):
             response = random.choice(random_sentences) 
             #await asyncio.sleep(.5) #the delay here is optional comment it out if u want
             await message.channel.send(f'{user.mention} {response}')
-            print(f'{ctx.message.author.name} sent the command: {ctx.message.content}')
+            print(f'{bot.user.name} said "{response}" against @{user.name}')
     await ctx.send(f"{user.mention} lmaoo skill issue fr")
    
 
@@ -832,5 +867,5 @@ async def raid(ctx, message: str, count: int, delay: float, channel: commands.Te
     
 
 
-bot.run(TOKEN, bot=False)
+bot.run(TOKEN)
 
