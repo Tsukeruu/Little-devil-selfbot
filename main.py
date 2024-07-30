@@ -653,10 +653,6 @@ async def shrug(ctx):
 
 
 
-
-
-
-
 @bot.command()
 async def lenny(ctx):
     await ctx.message.add_reaction('✅')
@@ -692,20 +688,23 @@ async def guildicon(ctx):
     print(f'{ctx.message.author.name} sent the command: {ctx.message.content}')
 
 @bot.command()
-async def purge(ctx, amount: int=None):
+async def purge(ctx, amount: int = None):
     await ctx.message.add_reaction('✅')
+    print(f'{ctx.message.author.name} sent the command: {ctx.message.content}')
     await ctx.message.delete()
     if amount is None:
         await ctx.send(f'[ERROR]: Invalid input! Command: {bot.command_prefix}purge <amount>')
         return
-    async for message in ctx.message.channel.history(limit=amount).filter(lambda m: m.author == bot.user).map(
-            lambda m: m):
-        try:
-            await message.delete()
-            print(f'{ctx.message.author.name} sent the command: {ctx.message.content}')
-        except:
-            pass
+    deleted_messages = 0
+    async for message in ctx.message.channel.history(limit=amount):
+        if message.author == bot.user:
+            try:
+                await message.delete()
+                deleted_messages += 1
+            except Exception as e:
+                print(f"Failed to delete message: {e}")
 
+    
 
 @bot.command(aliases=["9/11", "911", "terrorist"])
 async def nine_eleven(ctx):
