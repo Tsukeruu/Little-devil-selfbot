@@ -9,4 +9,3 @@
 - *If you want you can uninstall all the libraries and re install them for a full reboot*
 
 
-![My cool image](https://github.com/username/repository/blob/main/path/to/image.png)
