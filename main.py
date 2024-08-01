@@ -453,7 +453,7 @@ try:
         await ctx.message.add_reaction('✅')
         message = await ctx.send("```ini\n[Welcome to Little Devil selfbot created by el diablo, please stand by]\n```")
         await asyncio.sleep(1)  
-        new_message = f"```ini\nCreated by diablo | Version 2.5 | PREFIX = {PREFIX}\n \n[>raid]: >raid <message> <numberoftimes> <delay put 0> <specify channel if not then it will spam in all> (dont forget to remove the <>)\n[>info]: >info <userid> or <username>\n[>ping]: Returns your MS\n[>geocode]: >geocode <latitude> <longitude> (must be integers)\n[>exit]: Exits out of the selfbot\n[>iplookup]: >iplookup <ip>\n[>nitro]: self explanatory, generates nitro \n[>minesweeper]: play a game of minesweeper :D\n[>filegrabber (webhook)]: >filegrabber (put webhook url) all this does is make a token grabber py file\n[>nuke]: This time it requires admin\n[>hack]: >hack (user) this time its a fun command\n[>guildicon]: >self explanatory\n[>servername]: <name>\n[>massreact (emoji)]: >massreact (select the emoji you wana react with)\n[>purge]: >purge (int)\n[>tableflip]: does the cool thing\n[>lenny]: another cool thing\n[>shrug]: ANOTHER COOL THING\n[>unflip]: wowww\n[>phcomment] >phcomment <username> <comment>\n[>rage]: >rage (userid) replies L to them everytime they say something in chat\n[>911]: send a 911 animation with emojis\n[>fuck]: <userid> sends an ascii of you fucking him lmfao```"
+        new_message = f"```ini\nCreated by diablo | Version 2.5 | PREFIX = {PREFIX}\n \n[>raid]: >raid <message> <numberoftimes> <delay put 0> <specify channel if not then it will spam in all> (dont forget to remove the <>)\n[>info]: >info <userid> or <username>\n[>ping]: Returns your MS\n[>geocode]: >geocode <latitude> <longitude> (must be integers)\n[>exit]: Exits out of the selfbot\n[>iplookup]: >iplookup <ip>\n[>nitro]: self explanatory, generates nitro \n[>minesweeper]: play a game of minesweeper :D\n[>filegrabber (webhook)]: >filegrabber (put webhook url) all this does is make a token grabber py file\n[>nuke]: This time it requires admin\n[>hack]: >hack (user) this time its a fun command\n[>guildicon]: >self explanatory\n[>servername]: <name>\n[>massreact (emoji)]: >massreact (select the emoji you wana react with)\n[>purge]: >purge (int)\n[>tableflip]: does the cool thing\n[>lenny]: another cool thing\n[>shrug]: ANOTHER COOL THING\n[>unflip]: wowww\n[>phcomment] >phcomment <username> <comment>\n[>rage]: >rage (userid) replies L to them everytime they say something in chat\n[>911]: send a 911 animation with emojis\n[>fuck]: <userid> sends an ascii of you fucking him lmfao\n[>clear]: clears the terminal screen so you wont get bothered [LOGGED MESSAGES GET DELETED!!!]```"
         await message.edit(content=new_message)
         print(f'{ctx.message.author.name} sent the command: {ctx.message.content}')
 
@@ -832,6 +832,10 @@ try:
 
     @bot.command()
     async def clear(ctx):
+        await ctx.message.add_reaction('✅')
+        print(f'{ctx.message.author.name} sent the command: {ctx.message.content}')
+        time.sleep(0.5)
+        await ctx.message.delete()
         print('CLEARING TERMINAL...')
         time.sleep(1)
         if osname == "Linux":
