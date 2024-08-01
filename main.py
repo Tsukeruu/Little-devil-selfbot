@@ -906,4 +906,4 @@ except TypeError as e:
         print(f"{red}INVALID INPUT{reset}")
 
 except discord.errors.LoginFailure as f:
-    print('You didnt put the token in dumbass...')
+    print(f'{red}The token is either invalid or you left it empty...{reset}')
