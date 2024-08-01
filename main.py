@@ -13,7 +13,7 @@ try:
         package = input(f'{purple}Would you like to install the packages? Y/N: {reset}')
         if package == "y" or package == "Y":
             # os.startfile(os.path.join(os.getcwd(), 'install.bat'))
-            os.system("@echo Little devil manual installation:")
+            os.system("echo Little devil manual installation:")
             os.system("pip install -r requirements.txt")
             break
         elif package == "n" or package == "N":
@@ -904,3 +904,6 @@ except TypeError as e:
         print(f"{cyan}your choice.. you can always come back here btw{reset}")
     else:
         print(f"{red}INVALID INPUT{reset}")
+
+except discord.errors.LoginFailure as f:
+    print('You didnt put the token in dumbass...')
