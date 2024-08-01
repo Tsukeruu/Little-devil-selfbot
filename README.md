@@ -9,3 +9,7 @@
 - *If you want you can uninstall all the libraries and re install them for a full reboot*
 
 
+# Instructions:
+- *If you're on unix based systems, type: "chmod +x linuxinstall.sh" then type: "./linuxinstall.sh" Or just run the script and it will prompt it to you*
+- *If you happen to come across one of the errors simply just look at the readme file or the script will spot it and it will guide you on how to fix it*
+- *Put your token in config.json, ipinfo.io api key in there, and enable msgsniping by setting it to true and disabling it by setting it to false*
