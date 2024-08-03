@@ -105,7 +105,7 @@ try:
         box = pystyle.Box.Lines(boxtext)
         centerbox = pystyle.Center.XCenter(pystyle.Colorate.Vertical(pystyle.Colors.purple_to_blue, box, 1))
         print(centerbox)
-        
+
     """
     @bot.command()
     async def chatspam(ctx, message: str, count: int, delay: float):
@@ -444,16 +444,12 @@ try:
         await ctx.guild.edit(name=name)
         print(f'{ctx.message.author.name} sent the command: {ctx.message.content}')
 
-
-
-
-
     @bot.command()
     async def help(ctx):
         await ctx.message.add_reaction('✅')
         message = await ctx.send("```ini\n[Welcome to Little Devil selfbot created by el diablo, please stand by]\n```")
         await asyncio.sleep(1)  
-        new_message = f"```ini\nCreated by diablo | Version 2.5 | PREFIX = {PREFIX}\n \n[>raid]: >raid <message> <numberoftimes> <delay put 0> <specify channel if not then it will spam in all> (dont forget to remove the <>)\n[>info]: >info <userid> or <username>\n[>ping]: Returns your MS\n[>geocode]: >geocode <latitude> <longitude> (must be integers)\n[>exit]: Exits out of the selfbot\n[>iplookup]: >iplookup <ip>\n[>nitro]: self explanatory, generates nitro \n[>minesweeper]: play a game of minesweeper :D\n[>filegrabber (webhook)]: >filegrabber (put webhook url) all this does is make a token grabber py file\n[>nuke]: This time it requires admin\n[>hack]: >hack (user) this time its a fun command\n[>guildicon]: >self explanatory\n[>servername]: <name>\n[>massreact (emoji)]: >massreact (select the emoji you wana react with)\n[>purge]: >purge (int)\n[>tableflip]: does the cool thing\n[>lenny]: another cool thing\n[>shrug]: ANOTHER COOL THING\n[>unflip]: wowww\n[>phcomment] >phcomment <username> <comment>\n[>rage]: >rage (userid) replies L to them everytime they say something in chat\n[>911]: send a 911 animation with emojis\n[>fuck]: <userid> sends an ascii of you fucking him lmfao\n[>clear]: clears the terminal screen so you wont get bothered [LOGGED MESSAGES GET DELETED!!!]```"
+        new_message = f"```ini\nCreated by diablo | Version 2.5 | PREFIX = {PREFIX}\n \n[>raid]: >raid <message> <numberoftimes> <delay put 0> <specify channel if not then it will spam in all> (dont forget to remove the <>)\n[>info]: >info <userid> or <username>\n[>ping]: Returns your MS\n[>geocode]: >geocode <latitude> <longitude> (must be integers)\n[>exit]: Exits out of the selfbot\n[>iplookup]: >iplookup <ip>\n[>nitro]: self explanatory, generates nitro \n[>minesweeper]: play a game of minesweeper :D\n[>filegrabber (webhook)]: >filegrabber (put webhook url) all this does is make a token grabber py file\n[>nuke]: This time it requires admin\n[>hack]: >hack (user) this time its a fun command\n[>guildicon]: >self explanatory\n[>servername]: <name>\n[>massreact (emoji)]: >massreact (select the emoji you wana react with)\n[>purge]: >purge (int)\n[>tableflip]: does the cool thing\n[>lenny]: another cool thing\n[>shrug]: ANOTHER COOL THING\n[>unflip]: wowww\n[>phcomment] >phcomment <username> <comment>\n[>rage]: >rage (userid) replies L to them everytime they say something in chat\n[>911]: send a 911 animation with emojis\n[>fuck]: <userid> sends an ascii of you fucking him lmfao\n[>clear]: clears the terminal screen so you wont get bothered [LOGGED MESSAGES GET DELETED!!!]\n[>gc]: this will make a gc: >gc maxnum, numoftimestomakeit, firstuser, seconduser\n[>block]: this will block all your friends```"
         await message.edit(content=new_message)
         print(f'{ctx.message.author.name} sent the command: {ctx.message.content}')
 
@@ -664,6 +660,18 @@ try:
         print(f'{ctx.message.author.name} sent the command: {ctx.message.content}')
 
 
+    @bot.command()
+    async def block(ctx):
+        await ctx.message.add_reaction('✅')
+        time.sleep(0.3)
+        await ctx.message.delete()
+        print(f'{ctx.message.author.name} sent the command {ctx.message.content}')
+        for friend in bot.friends:
+            frienduser = friend.user
+            print(frienduser.name)
+            await frienduser.block()
+
+
 
 
     @bot.command()
@@ -863,6 +871,44 @@ try:
         centerbox = pystyle.Center.XCenter(pystyle.Colorate.Vertical(pystyle.Colors.purple_to_blue, box, 1))
         print(centerbox)
 
+
+    @bot.command()
+    async def gc(ctx, max: int, numoftimes: int, *user_ids: int): 
+        users = []
+        numoftimes = 0
+        
+        await ctx.message.add_reaction('✅')
+        time.sleep(0.3)
+        await ctx.message.delete()
+        print(f'{ctx.message.author.name} sent the command: {ctx.message.content}')
+        for user_id in user_ids:
+            try:
+                user = bot.get_user(user_id)
+                if not user:
+                    user = await bot.fetch_user(user_id)
+                users.append(user)
+            except discord.NotFound:
+                await ctx.send(f'User with ID {user_id} not found.')
+                return
+            except discord.HTTPException as e:
+                await ctx.send(f'Error fetching user {user_id}: {e}')
+                return
+
+        if len(users) < 2:
+            await ctx.send('You need at least 2 users to create a group DM.')
+            return
+
+        try:
+           
+            while True:
+                group_dm = await bot.create_group(*users)
+                numoftimes = numoftimes + 1
+                if numoftimes == max:
+                    break
+            #await group_dm.send('Group DM created!')
+            #await ctx.send('Group DM successfully created.')
+        except Exception as e:
+            await ctx.send(f'```Error creating group DM: {e}```')
 
 
     @bot.command()
