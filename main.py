@@ -83,11 +83,11 @@ try:
         text = '''
 
 
-            ▄▄▌  ▪  ▄▄▄▄▄▄▄▄▄▄▄▄▌  ▄▄▄ .    ·▄▄▄▄  ▄▄▄ . ▌ ▐·▪  ▄▄▌  
-            ██•  ██ •██  •██  ██•  ▀▄.▀·    ██▪ ██ ▀▄.▀·▪█·█▌██ ██•  
-            ██▪  ▐█· ▐█.▪ ▐█.▪██▪  ▐▀▀▪▄    ▐█· ▐█▌▐▀▀▪▄▐█▐█•▐█·██▪  
-            ▐█▌▐▌▐█▌ ▐█▌· ▐█▌·▐█▌▐▌▐█▄▄▌    ██. ██ ▐█▄▄▌ ███ ▐█▌▐█▌▐▌
-            .▀▀▀ ▀▀▀ ▀▀▀  ▀▀▀ .▀▀▀  ▀▀▀     ▀▀▀▀▀•  ▀▀▀ . ▀  ▀▀▀.▀▀▀         
+                    ▄▄▌  ▪  ▄▄▄▄▄▄▄▄▄▄▄▄▌  ▄▄▄ .    ·▄▄▄▄  ▄▄▄ . ▌ ▐·▪  ▄▄▌  
+                    ██•  ██ •██  •██  ██•  ▀▄.▀·    ██▪ ██ ▀▄.▀·▪█·█▌██ ██•  
+                    ██▪  ▐█· ▐█.▪ ▐█.▪██▪  ▐▀▀▪▄    ▐█· ▐█▌▐▀▀▪▄▐█▐█•▐█·██▪  
+                    ▐█▌▐▌▐█▌ ▐█▌· ▐█▌·▐█▌▐▌▐█▄▄▌    ██. ██ ▐█▄▄▌ ███ ▐█▌▐█▌▐▌
+                    .▀▀▀ ▀▀▀ ▀▀▀  ▀▀▀ .▀▀▀  ▀▀▀     ▀▀▀▀▀•  ▀▀▀ . ▀  ▀▀▀.▀▀▀         
 
 
     '''
@@ -141,19 +141,29 @@ try:
     if config['MSGSNIPE']:
         @bot.event
         async def on_message_delete(message):
-            message_time = message.created_at.strftime('%Y-%m-%d %H:%M:%S')
-            if message.author == bot.user:
-                return
-            if message.author != bot.user:
+            with open("msglogs.txt", "a") as g:
+                message_time = message.created_at.strftime('%Y-%m-%d %H:%M:%S')
+                if message.author == bot.user:
+                    return
                 if message.guild is None:
                     if isinstance(message.channel, discord.DMChannel):
-                        pystyle.Write.Print(f'[DM!] Message is deleted by: "{message.author.name}" in DM, Message: "{message.content}", Time: {message_time}\n', pystyle.Colors.purple_to_blue, interval=0.02)
+                        pystyle.Write.Print(
+                            f'[DM!] Message is deleted by: "{message.author.name}" in DM, Message: "{message.content}", Time: {message_time}\n',
+                            pystyle.Colors.purple_to_blue, interval=0.02)
+                        g.write(
+                            f'[DM!] Message is deleted by: "{message.author.name}" in DM, Message: "{message.content}", Time: {message_time}\n')
                     else:
-                        pystyle.Write.Print(f'[GC!] Message is deleted by: "{message.author.name}" in a certain GC, Message: "{message.content}", Time: {message_time}\n', pystyle.Colors.purple_to_blue, interval=0.02)
+                        pystyle.Write.Print(
+                            f'[GC!] Message is deleted by: "{message.author.name}" in a certain GC, Message: "{message.content}", Time: {message_time}\n',
+                            pystyle.Colors.purple_to_blue, interval=0.02)
+                        g.write(
+                            f'[GC!] Message is deleted by: "{message.author.name}" in a certain GC, Message: "{message.content}", Time: {message_time}\n')
                 else:
-                    pystyle.Write.Print(f'[SERVER!] Message is deleted by: "{message.author.name}" in "{message.guild}", #{message.channel.name}, Message: "{message.content}", Time: {message_time}\n', pystyle.Colors.purple_to_blue, interval=0.02)
-
-
+                    pystyle.Write.Print(
+                        f'[SERVER!] Message is deleted by: "{message.author.name}" in "{message.guild}", #{message.channel.name}, Message: "{message.content}", Time: {message_time}\n',
+                        pystyle.Colors.purple_to_blue, interval=0.02)
+                    g.write(
+                        f'[SERVER!] Message is deleted by: "{message.author.name}" in "{message.guild}", #{message.channel.name}, Message: "{message.content}", Time: {message_time}\n')
 
 
     @bot.command(aliases=["pornhubcomment", 'phc'])
@@ -723,10 +733,10 @@ try:
     async def guildicon(ctx):
         await ctx.message.add_reaction('✅')
         await ctx.message.delete()
-        if not ctx.guild.icon.url:
+        if not ctx.guild.icon_url:
             await ctx.send(f"**{ctx.guild.name}** has no icon")
             return
-        await ctx.send(ctx.guild.icon.url)
+        await ctx.send(ctx.guild.icon_url)
         print(f'{ctx.message.author.name} sent the command: {ctx.message.content}')
 
     @bot.command()
