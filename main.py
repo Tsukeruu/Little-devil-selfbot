@@ -34,6 +34,7 @@ try:
     import io
     import pystyle
     import json
+    #from sys import argv
     import sys
 
     """
@@ -56,6 +57,9 @@ try:
     Note that some commands here are made by astraa so credits to him 
 
     """
+    
+
+
 
     with open('config.json', 'r') as f:    
         config = json.load(f)
