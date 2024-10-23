@@ -28,7 +28,6 @@ try:
     import asyncio
     from discord import Forbidden
     import requests
-    import keyboard
     import string
     import random
     import aiohttp
@@ -38,6 +37,9 @@ try:
     import sys
 
     """
+
+    USE PYTHON VERSION: 3.8 - 3.10 OR JUST 3.9 FOR DISCORD SUPPORT!!!
+    
     If you want to install all these packages here you go:
     discord
     discord.py
@@ -94,7 +96,8 @@ try:
 
         if config['MSGSNIPE'] != True:
             pystyle.Write.Print('MSGSNIPE is set to false, change it in the config file', pystyle.Colors.red_to_yellow, interval=0.020)
-            
+            time.sleep(1)
+            os.system('cls')
 
 
         #print(pystyle.Colorate.Vertical(pystyle.Colors.yellow_to_red, text, 1))
