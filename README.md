@@ -9,6 +9,7 @@
 - *If you happen to come upon an error with the: "WARNING  discord.utils Info API down. Falling back to manual fetching..." simply type this in your terminal: pip install --upgrade discord.py-self aiohttp... or just upgrade all the libraries*
 - *If you want you can uninstall all the libraries and re install them for a full reboot*
 ![image](https://github.com/user-attachments/assets/35b86076-811b-4416-bcd6-64b0639ab6a0)
+![image](https://github.com/user-attachments/assets/7ed86f6a-186f-400b-b26e-419a00eac439)
 
 
 # Instructions:
