@@ -107,8 +107,6 @@ try:
         #print(pystyle.Colorate.Vertical(pystyle.Colors.yellow_to_red, text, 1))
         colortext = pystyle.Colorate.Vertical(pystyle.Colors.purple_to_blue, pystyle.Center.XCenter(text), 1)
         print(colortext)
-        activity = discord.Streaming(name="Little devil", url="https://www.youtube.com/watch?v=2g5xkLqIElU")
-        await bot.change_presence(activity=activity)
         time.sleep(1)
         boxtext = f"[+] Logged in as: {bot.user.name}\n[+] UserID: {bot.user.id}\n[+] Design is inspired from PWNSEC\n[+] Startup command: >help\n[+] MSGSNIPING: {config['MSGSNIPE']}"
         box = pystyle.Box.Lines(boxtext)
